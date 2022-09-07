@@ -94,5 +94,7 @@ setInterval(async function () {
 
     console.log("Data", response.data);
 
-    console.log("Data Data", response.data.data);
+    console.log("Data Data", response.data.data[0].field_data);
+
+    console.log("Data ID", response.data.data[0].id);
 }, the_interval);
