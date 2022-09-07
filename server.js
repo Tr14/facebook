@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+app.set('port', process.env.PORT || 3000);
 
 // Enter the Page Access Token from the previous step
 const FACEBOOK_PAGE_ACCESS_TOKEN = 'EABSbmGWhdZCYBAFns3VRwZC5S0MCVOkZCPO4uiZCPTdjZAwYZBiwY8G2YLIhd9P6WZBDbUqSxYSerVD5UNlS9efqHwYnO6jdHZBZCmc3tuZCoAmepb06iaC9fZCZB6i5J2zHiH9SaA5cWApn3Yd45UslwRtAoWZAxZBLkLhimsKGbZAW9PhORBNjRxlxoEr';
@@ -42,9 +42,7 @@ app.post('/webhook', async (req, res) => {
     res.send({ success: true });
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-});
+app.listen(app.get('port'), () => console.log(`Node server listening on port ${app.get('port')}!`));
 
 // Process incoming leads
 async function processNewLead(leadId) {
