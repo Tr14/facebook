@@ -84,16 +84,11 @@ async function processNewLead(leadId) {
     console.log('Lead ID: ', leadId);
 }
 
-var minutes = 5, the_interval = minutes * 60 * 1000;
+var minutes = 2, the_interval = minutes * 60 * 1000;
 setInterval(async function () {
-    console.log("I am doing my 5 minutes check");
+    console.log("I am doing my 2 minutes check");
 
-    const response = await axios.get('https://www.facebook.com/ads/lead_gen/export_csv/', {
-        params: {
-            'id': '6174986589184993',
-            'type': 'form',
-        }
-    });
+    const response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
     console.log(response);
 }, the_interval);
