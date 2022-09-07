@@ -92,8 +92,8 @@ setInterval(async function () {
 
     let response = await axios.get(`https://graph.facebook.com/v14.0/${FORM_ID}/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
-    var arrayOfStrings = arr.map(function (response) {
-        return response.id;
+    var arrayOfStrings = response.map(function (obj) {
+        return obj.id;
     });
 
     console.log("Data", response.data);
