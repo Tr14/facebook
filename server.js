@@ -35,8 +35,6 @@ app.post('/webhook', async (req, res) => {
         for (const change of entry.changes) {
             // Process new lead (leadgen_id)
             await processNewLead(change.value.leadgen_id);
-
-            await processForm(change.value.form_id)
         }
     }
 
@@ -86,42 +84,16 @@ async function processNewLead(leadId) {
     console.log('Lead ID: ', leadId);
 }
 
-// Process incoming leads
-async function processForm(formId) {
-    let response;
+var minutes = 5, the_interval = minutes * 60 * 1000;
+setInterval(async function () {
+    console.log("I am doing my 5 minutes check");
 
-    try {
-        // Get lead details by lead ID from Facebook API
-        response = await axios.get(`https://graph.facebook.com/v14.0/${formId}/leadgen_forms?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
-    }
-    catch (err) {
-        // Log errors
-        return console.warn(`An invalid response was received from the Facebook API:`, err.response.data ? JSON.stringify(err.response.data) : err.response);
-    }
+    const response = await axios.get('https://www.facebook.com/ads/lead_gen/export_csv/', {
+        params: {
+            'id': '6174986589184993',
+            'type': 'form',
+        }
+    });
 
-    // Ensure valid API response returned
-    if (!response.data || (response.data && (response.data.error || !response.data.field_data))) {
-        return console.warn(`An invalid response was received from the Facebook API: ${response}`);
-    }
-
-    // Lead fields
-    const leadForm = [];
-
-    // Extract fields
-    for (const field of response.data.field_data) {
-        // Get field name & value
-        const fieldName = field.name;
-        const fieldValue = field.values[0];
-
-        // Store in lead array
-        leadForm.push(`${fieldName}: ${fieldValue}`);
-    }
-
-    // Implode into string with newlines in between fields
-    const formInfo = leadForm.join('\n');
-
-    // Log to console
-    console.log('Form Info\n', formInfo);
-
-    console.log('Form ID: ', formId);
-}
+    console.log(response);
+}, the_interval);
