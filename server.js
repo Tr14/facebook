@@ -83,14 +83,23 @@ async function processNewLead(leadId) {
 
     console.log('Lead ID: ', leadId);
 
-    console.log('Response', response.data.field_data);
+    // console.log('Response', response.data.field_data);
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(async function () {
     console.log("Doing 1 minute fetch data");
 
-    let response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+    let response = await axios.get(`https://graph.facebook.com/v14.0/${leadId}/?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
     console.log(response.data.field_data);
 }, the_interval);
+
+// var minutes = 1, the_interval = minutes * 60 * 1000;
+// setInterval(async function () {
+//     console.log("Doing 1 minute fetch data");
+
+//     let response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+
+//     console.log(response.data.field_data);
+// }, the_interval);
