@@ -38,6 +38,7 @@ app.post('/webhook', async (req, res) => {
         }
     }
 
+    console.log(req);
     // Success
     res.send({ success: true });
 })
@@ -80,6 +81,8 @@ async function processNewLead(leadId) {
 
     // Log to console
     console.log('A new lead was received!\n', leadInfo);
+
+    console.log("response", response)
 
     // Use a library like "nodemailer" to notify you about the new lead
     // 
