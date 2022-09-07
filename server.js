@@ -94,6 +94,8 @@ setInterval(async function () {
 
     console.log("Data", response.data);
 
+    console.log("Lead Data:", response.data.data[0].field_data);
+
     console.log("Lead Email:", response.data.data[0].field_data[0].value);
 
     console.log("Lead ID:", response.data.data[0].id);
