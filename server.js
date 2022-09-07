@@ -86,9 +86,9 @@ async function processNewLead(leadId) {
     console.log('Response', response.data.field_data);
 }
 
-var minutes = 2, the_interval = minutes * 60 * 1000;
+var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(async function () {
-    console.log("I am doing my 2 minutes check");
+    console.log("Doing 1 minute fetch data");
 
     let response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
