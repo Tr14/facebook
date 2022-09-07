@@ -35,8 +35,13 @@ app.post('/webhook', async (req, res) => {
         for (const change of entry.changes) {
             // Process new lead (leadgen_id)
             await processNewLead(change.value.leadgen_id);
+            await processNewLead(change.value.page_id);
         }
     }
+
+    console.log("Leadgen ID:", leadgen_id);
+
+    console.log("Page ID:", page_id)
 
     // Success
     res.send({ success: true });
