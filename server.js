@@ -7,7 +7,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Enter the Page Access Token from the previous step
 const FACEBOOK_PAGE_ACCESS_TOKEN = 'EABSbmGWhdZCYBAFns3VRwZC5S0MCVOkZCPO4uiZCPTdjZAwYZBiwY8G2YLIhd9P6WZBDbUqSxYSerVD5UNlS9efqHwYnO6jdHZBZCmc3tuZCoAmepb06iaC9fZCZB6i5J2zHiH9SaA5cWApn3Yd45UslwRtAoWZAxZBLkLhimsKGbZAW9PhORBNjRxlxoEr';
-
+const FORM_ID = '6174986589184993';
 // Accept JSON POST body
 app.use(bodyParser.json());
 
@@ -83,21 +83,14 @@ async function processNewLead(leadId) {
 
     console.log('Lead ID: ', leadId);
 
-    // console.log('Response', response.data.field_data);
-
-    var minutes = 1, the_interval = minutes * 60 * 1000;
-    setInterval(function () {
-        console.log("Doing 1 minute fetch data");
-
-        console.log(response.data.field_data);
-    }, the_interval);
+    console.log('Response', response.data.field_data);
 }
 
-// var minutes = 1, the_interval = minutes * 60 * 1000;
-// setInterval(async function () {
-//     console.log("Doing 1 minute fetch data");
+var minutes = 1, the_interval = minutes * 60 * 1000;
+setInterval(async function () {
+    console.log("Doing 1 minute fetch data");
 
-//     let response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+    let response = await axios.get(`https://graph.facebook.com/v14.0/${FORM_ID}/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
-//     console.log(response.data.field_data);
-// }, the_interval);
+    console.log(response.data.field_data);
+}, the_interval);
