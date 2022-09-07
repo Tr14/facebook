@@ -90,5 +90,5 @@ setInterval(async function () {
 
     const response = await axios.get(`https://graph.facebook.com/v14.0/6174986589184993/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
-    console.log(response);
+    console.log(response.data.field_data);
 }, the_interval);
