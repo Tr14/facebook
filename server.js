@@ -81,9 +81,9 @@ async function processNewLead(leadId) {
     // Log to console
     console.log('A new lead was received!\n', leadInfo);
 
-    console.log('Lead ID: ', leadId);
+    //console.log('Lead ID: ', leadId);
 
-    console.log('Response', response.data.field_data);
+    //console.log('Response', response.data.field_data);
 }
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
@@ -92,9 +92,9 @@ setInterval(async function () {
 
     let response = await axios.get(`https://graph.facebook.com/v14.0/${FORM_ID}/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
 
-    console.log("Data", response.data);
+    //console.log("Data", response.data);
 
-    console.log("Data Data", response.data.data[0].field_data);
+    console.log("Lead Email:", response.data.data[0].field_data[0].value);
 
-    console.log("Data ID", response.data.data[0].id);
+    console.log("Lead ID", response.data.data[0].id);
 }, the_interval);
