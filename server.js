@@ -38,7 +38,6 @@ app.post('/webhook', async (req, res) => {
         }
     }
 
-    console.log("Requestttttttttttttttttttttttttttttttttttttttt", req);
     // Success
     res.send({ success: true });
 })
@@ -51,7 +50,7 @@ async function processNewLead(leadId) {
 
     try {
         // Get lead details by lead ID from Facebook API
-        response = await axios.get(`https://graph.facebook.com/v9.0/${leadId}/?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+        response = await axios.get(`https://graph.facebook.com/v14.0/${leadId}/?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
     }
     catch (err) {
         // Log errors
@@ -82,7 +81,7 @@ async function processNewLead(leadId) {
     // Log to console
     console.log('A new lead was received!\n', leadInfo);
 
-    console.log("Responseeeeeeeeeeeeeeeeeeeeeee", response)
+    console.log('Lead ID: ', leadId);
 
     // Use a library like "nodemailer" to notify you about the new lead
     // 
