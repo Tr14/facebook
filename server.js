@@ -82,6 +82,8 @@ async function processNewLead(leadId) {
     console.log('A new lead was received!\n', leadInfo);
 
     console.log('Lead ID: ', leadId);
+
+    console.log('Response', response.data.field_data);
 }
 
 var minutes = 2, the_interval = minutes * 60 * 1000;
