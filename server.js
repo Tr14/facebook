@@ -101,7 +101,7 @@ setInterval(async function () {
     //console.log("Lead ID:", response.data.data[0].id);
 
     for (const key in response) {
-        if (obj.hasOwnProperty(key)) {
+        if (response.hasOwnProperty(key)) {
             console.log(`${key} : ${res[key]}`)
         }
     }
