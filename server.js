@@ -90,7 +90,13 @@ var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(async function () {
     console.log("Doing 1 minute fetch data");
 
-    let response = await axios.get(`https://graph.facebook.com/v14.0/${FORM_ID}/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+    data = []
+
+    for (let i = 1; i < 5; i++) {
+        let response = await axios.get(`https://graph.facebook.com/v14.0/${FORM_ID}/leads?access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+        data.push(response.data)
+    }
+
 
     //console.log("Data", response.data);
 
@@ -100,6 +106,6 @@ setInterval(async function () {
 
     //console.log("Lead ID:", response.data.data[0].id);
 
-    response.data.forEach(data => console.log(data[0].id))
+    return data
 
 }, the_interval);
