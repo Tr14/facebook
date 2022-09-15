@@ -103,6 +103,7 @@ setInterval(async function () {
     for (const key in response) {
         if (response.hasOwnProperty(key)) {
             console.log(`${key} : ${response[key]}`)
+            console.log("Lead Email:", response.data.data[0].field_data[0].values.toString());
         }
     }
 
