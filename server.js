@@ -86,7 +86,7 @@ async function processNewLead(leadId) {
     //console.log('Response', response.data.field_data);
 }
 
-var minutes = 15, the_interval = minutes * 60 * 1000;
+var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(async function () {
     console.log("Doing 1 minute fetch data");
 
