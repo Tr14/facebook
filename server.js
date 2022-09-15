@@ -100,10 +100,6 @@ setInterval(async function () {
 
     //console.log("Lead ID:", response.data.data[0].id);
 
-    for (const key in response) {
-        if (response.hasOwnProperty(key)) {
-            console.log(`${key} : ${response[key].data}`)
-        }
-    }
+    response.data.forEach(data => console.log(data[0].id))
 
 }, the_interval);
