@@ -96,7 +96,14 @@ setInterval(async function () {
 
     //console.log("Lead Data:", response.data.data[0].field_data);
 
-    console.log("Lead Email:", response.data.data[0].field_data[0].values.toString());
+    //console.log("Lead Email:", response.data.data[0].field_data[0].values.toString());
 
-    console.log("Lead ID:", response.data.data[0].id);
+    //console.log("Lead ID:", response.data.data[0].id);
+
+    for (const key in response) {
+        if (obj.hasOwnProperty(key)) {
+            console.log(`${key} : ${res[key]}`)
+        }
+    }
+
 }, the_interval);
