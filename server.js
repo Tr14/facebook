@@ -97,6 +97,7 @@ setInterval(async function () {
         data.push(response.data)
     }
 
+    console.log(data)
 
     //console.log("Data", response.data);
 
